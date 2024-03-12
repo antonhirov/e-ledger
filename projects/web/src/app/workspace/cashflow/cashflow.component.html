@@ -1,0 +1,149 @@
+<div class="mx-lg-4">
+    <div class="my-1 my-lg-2">
+        <el-list-income
+            *ngIf="isIncome"
+            [selector]="incomesSelector"></el-list-income>
+        <el-list-outcome
+            *ngIf="isOutcome"
+            [selector]="outcomesSelector"></el-list-outcome>
+    </div>
+    <p class="mb-2 text-end fw-bold">New record:</p>
+    <form
+        #elCashflowForm="ngForm"
+        autocomplete="off"
+        novalidate
+        (ngSubmit)="onSubmit(elCashflowForm)">
+        <div *ngIf="isIncome">
+            <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text">From<sup>*</sup>:</span>
+                <input
+                    #elFrom="ngModel"
+                    type="text"
+                    class="form-control"
+                    name="from"
+                    ngModel
+                    required
+                    elDatepicker
+                    (onHidden)="elFrom.control.markAsDirty()" />
+            </div>
+            <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text">To<sup>*</sup>:</span>
+                <input
+                    #elTo="ngModel"
+                    type="text"
+                    class="form-control"
+                    name="to"
+                    ngModel
+                    required
+                    elDatepicker
+                    (onHidden)="elTo.control.markAsDirty()" />
+            </div>
+            <div class="input-group input-group-sm mb-3">
+                <label for="source" class="input-group-text"
+                    >Source<sup>*</sup>:</label
+                >
+                <ng-select
+                    name="source"
+                    labelForId="source"
+                    class="form-control"
+                    ngModel
+                    required>
+                    <ng-option
+                        *ngFor="
+                            let item of sources$ | async;
+                            trackBy: trackById
+                        "
+                        [value]="item.id">
+                        {{ item.name }}
+                    </ng-option>
+                </ng-select>
+            </div>
+            <div class="input-group input-group-sm">
+                <input
+                    type="number"
+                    class="form-control"
+                    placeholder="0.00"
+                    name="incomeSum"
+                    ngModel
+                    required
+                    pattern="^[0-9]*\.?[0-9]{0,2}$"
+                    [max]="sumMaxValue" />
+                <span class="input-group-text">$<sup>*</sup></span>
+            </div>
+        </div>
+        <div *ngIf="isOutcome">
+            <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text">Date<sup>*</sup>:</span>
+                <input
+                    #elDate="ngModel"
+                    type="text"
+                    class="form-control"
+                    name="date"
+                    ngModel
+                    required
+                    elDatepicker
+                    (onHidden)="elDate.control.markAsDirty()" />
+            </div>
+            <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text">Details:</span>
+                <input
+                    type="text"
+                    class="form-control"
+                    name="description"
+                    ngModel
+                    [maxlength]="descriptionMaxLength" />
+            </div>
+            <div class="input-group input-group-sm mb-3">
+                <label for="category" class="input-group-text"
+                    >Category<sup>*</sup>:</label
+                >
+                <ng-select
+                    name="category"
+                    labelForId="category"
+                    class="form-control"
+                    ngModel
+                    required>
+                    <ng-option
+                        *ngFor="
+                            let item of categories$ | async;
+                            trackBy: trackById
+                        "
+                        [value]="item.id">
+                        {{ item.name }}
+                    </ng-option>
+                </ng-select>
+            </div>
+            <div class="input-group input-group-sm">
+                <input
+                    type="number"
+                    class="form-control"
+                    placeholder="0.00"
+                    name="outcomeSum"
+                    ngModel
+                    required
+                    pattern="^[0-9]*\.?[0-9]{0,2}$"
+                    [max]="sumMaxValue" />
+                <span class="input-group-text">$<sup>*</sup></span>
+            </div>
+        </div>
+        <div class="el-text-small text-danger"><sup>*</sup>required</div>
+        <div class="row mb-4 text-center">
+            <div class="col-6">
+                <button
+                    type="submit"
+                    class="btn btn-sm btn-primary fw-bold"
+                    [disabled]="formSubmitted && elCashflowForm.invalid">
+                    Add
+                </button>
+            </div>
+            <div class="col-6">
+                <button
+                    type="button"
+                    class="btn btn-sm btn-primary fw-bold"
+                    (click)="onClear(elCashflowForm)">
+                    Clear
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

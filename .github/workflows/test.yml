@@ -1,0 +1,45 @@
+name: test
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "develop" ]
+
+jobs:
+  test:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: pwsh
+    env:
+      KEY: "-"
+      USER_STORAGE: "-"
+      DATA_STORAGE: "-"
+      COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+    steps:
+    - name: Checkout data
+      uses: actions/checkout@v3
+    - name: Setup node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: "npm"
+    - name: Set credentials
+      run: .\set.credentials.ps1 -key $env:KEY -userStorage $env:USER_STORAGE -dataStorage $env:DATA_STORAGE
+    - name: Install packages
+      run: npm ci
+    - name: Run tests
+      run: npm test
+    - name: Create report
+      if: success() || failure()
+      id: report
+      uses: phoenix-actions/test-reporting@v8
+      with:
+        name: report
+        path: tests.xml
+        reporter: jest-junit
+        fail-on-error: false
+    - name: Print summary
+      if: success() || failure()
+      run: |
+        "Report: ${{ steps.report.outputs.runHtmlUrl }}" >> $env:GITHUB_STEP_SUMMARY

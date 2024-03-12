@@ -1,0 +1,10 @@
+button {
+    &:first-child,
+    &:last-child {
+        width: 3rem;
+    }
+    &[disabled] {
+        opacity: 1;
+    }
+    min-width: 2.2rem;
+}

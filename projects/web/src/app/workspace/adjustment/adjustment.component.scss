@@ -1,0 +1,8 @@
+@import "toolkit";
+
+:host > div {
+    margin-top: 1rem;
+    @include media-breakpoint-up(lg) {
+        margin-top: 3.5rem;
+    }
+}

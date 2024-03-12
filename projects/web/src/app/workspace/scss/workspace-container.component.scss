@@ -1,0 +1,31 @@
+@import "toolkit";
+
+@mixin el-required {
+    background: repeating-linear-gradient(
+        -45deg,
+        $white,
+        $white 0.5rem,
+        rgba($danger, 0.2) 0.5rem,
+        rgba($danger, 0.2) 1rem
+    );
+}
+
+.el-container {
+    @include media-breakpoint-up(lg) {
+        @include border-start-radius($border-radius);
+    }
+    ::ng-deep {
+        input.ng-touched.ng-dirty.ng-invalid[elDatepicker],
+        input.ng-touched.ng-dirty.ng-invalid[type="file"],
+        input.ng-touched.ng-invalid:not([elDatepicker]):not([type="file"]) {
+            border-color: $danger;
+            @include el-required;
+        }
+        ng-select.ng-touched.ng-invalid {
+            border-color: $danger;
+            > div {
+                @include el-required;
+            }
+        }
+    }
+}

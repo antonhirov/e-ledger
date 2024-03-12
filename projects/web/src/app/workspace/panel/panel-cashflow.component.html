@@ -1,0 +1,17 @@
+<div
+    class="d-flex flex-lg-column align-items-center justify-content-evenly h-100">
+    <button
+        type="button"
+        class="btn btn-outline-primary w-50 mx-4 my-3 my-lg-0 fw-bold"
+        [class.active]="isIncome"
+        (click)="onSetIncome()">
+        Income
+    </button>
+    <button
+        type="button"
+        class="btn btn-outline-primary w-50 mx-4 my-3 my-lg-0 fw-bold"
+        [class.active]="isOutcome"
+        (click)="onSetOutcome()">
+        Outcome
+    </button>
+</div>

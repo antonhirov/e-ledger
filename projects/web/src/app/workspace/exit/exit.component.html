@@ -1,0 +1,24 @@
+<div>
+    <table class="table mt-3">
+        <tr>
+            <td class="fw-bold">Session expires after:</td>
+            <td class="text-end">
+                <span>
+                    {{ minutes | number: "2.0-0" }}m
+                    {{ seconds | number: "2.0-0" }}s
+                </span>
+            </td>
+        </tr>
+        <tr class="table-group-divider">
+            <td class="fw-bold">Status:</td>
+            <td class="text-end">
+                <span *ngIf="status === 'saved'" class="text-primary"
+                    >saved</span
+                >
+                <span *ngIf="status === 'unsaved'" class="text-danger"
+                    >not saved</span
+                >
+            </td>
+        </tr>
+    </table>
+</div>

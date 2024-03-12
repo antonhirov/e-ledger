@@ -1,0 +1,10 @@
+@import "toolkit";
+
+button {
+    padding: 0;
+    display: block;
+    border: 2px solid $dark;
+    img {
+        display: block;
+    }
+}

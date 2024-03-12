@@ -1,0 +1,33 @@
+<div class="modal-body p-4">
+    <p class="fw-bold">Confirm your current email and password:</p>
+    <form
+        #elSettingDialogForm="ngForm"
+        autocomplete="off"
+        novalidate
+        (ngSubmit)="onSubmit(elSettingDialogForm)">
+        <div class="input-group my-2">
+            <span class="input-group-text">Email:</span>
+            <input
+                class="form-control"
+                type="email"
+                name="email"
+                ngModel
+                email
+                required />
+        </div>
+        <div class="input-group my-2">
+            <span class="input-group-text">Password:</span>
+            <input
+                class="form-control"
+                type="password"
+                name="password"
+                ngModel
+                required />
+        </div>
+        <div class="text-center mt-3">
+            <button type="submit" class="btn btn-outline-primary">
+                Continue
+            </button>
+        </div>
+    </form>
+</div>

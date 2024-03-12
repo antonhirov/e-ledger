@@ -1,0 +1,121 @@
+<ng-template #elUserTooltip
+    >User data<br />(all fields are required)</ng-template
+>
+<ng-template #elWorkflowTooltip
+    >Saving data to the server<br />(required)</ng-template
+>
+<div>
+    <form
+        #elSettingForm="ngForm"
+        autocomplete="off"
+        novalidate
+        (ngSubmit)="onSubmit(elSettingForm)">
+        <p class="mb-2 text-end fw-bold">
+            User<img
+                class="align-top"
+                src="../../../assets/QuestionMark.svg"
+                [tooltip]="elUserTooltip"
+                placement="left"
+                alt="Tip" />:
+        </p>
+        <div class="input-group input-group-sm">
+            <span class="input-group-text">Email:</span>
+            <input
+                #elEmail="ngModel"
+                class="form-control"
+                type="email"
+                name="email"
+                [(ngModel)]="setting.email"
+                email
+                required />
+        </div>
+        <p class="el-text-small text-danger text-end">
+            <span *ngIf="elEmail.touched && elEmail.invalid">
+                <!-- eslint-disable-next-line @angular-eslint/template/no-call-expression -->
+                {{ getErrorMessage(elEmail) }}
+            </span>
+        </p>
+        <div class="input-group input-group-sm">
+            <span class="input-group-text">Password:</span>
+            <input
+                #elPassword="ngModel"
+                class="form-control"
+                type="password"
+                name="password"
+                [(ngModel)]="setting.password"
+                required
+                elEqualPasswords="passwordConfirm"
+                [minlength]="passwordMinLength"
+                (focus)="setting.clearPassword()" />
+        </div>
+        <p class="el-text-small text-danger text-end">
+            <span *ngIf="elPassword.touched && elPassword.invalid">
+                <!-- eslint-disable-next-line @angular-eslint/template/no-call-expression -->
+                {{ getErrorMessage(elPassword) }}
+            </span>
+        </p>
+        <div class="input-group input-group-sm">
+            <span class="input-group-text">Password:</span>
+            <input
+                #elPasswordConfirm="ngModel"
+                class="form-control"
+                type="password"
+                name="passwordConfirm"
+                placeholder="confirm the password.."
+                [(ngModel)]="setting.passwordConfirm"
+                required
+                elEqualPasswords="password"
+                (focus)="setting.clearPassword()" />
+        </div>
+        <p class="el-text-small text-danger text-end">
+            <span
+                *ngIf="elPasswordConfirm.touched && elPasswordConfirm.invalid">
+                <!-- eslint-disable-next-line @angular-eslint/template/no-call-expression -->
+                {{ getErrorMessage(elPasswordConfirm) }}
+            </span>
+        </p>
+        <hr />
+        <p class="mb-2 text-end fw-bold">
+            Workflow<img
+                class="align-top"
+                src="../../../assets/QuestionMark.svg"
+                [tooltip]="elWorkflowTooltip"
+                placement="left"
+                alt="Tip" />:
+        </p>
+        <div class="input-group input-group-sm mb-3">
+            <label for="syncMode" class="input-group-text">Sync period:</label>
+            <ng-select
+                name="syncMode"
+                labelForId="syncMode"
+                class="form-control"
+                [(ngModel)]="setting.syncPeriod"
+                required
+                [clearable]="false">
+                <ng-option
+                    *ngFor="let item of syncPeriods; trackBy: trackById"
+                    [value]="item.id">
+                    {{ item.name }}
+                </ng-option>
+            </ng-select>
+        </div>
+        <div class="row mt-3 mb-4 text-center">
+            <div class="col-6">
+                <button
+                    type="submit"
+                    class="btn btn-sm btn-primary fw-bold"
+                    [disabled]="formSubmitted && elSettingForm.invalid">
+                    Save
+                </button>
+            </div>
+            <div class="col-6">
+                <button
+                    type="button"
+                    class="btn btn-sm btn-primary fw-bold"
+                    (click)="onCancel()">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,71 @@
+@font-face {
+    font-family: MainFont;
+    src: url("assets/MainFont.ttf") format("truetype");
+}
+@font-face {
+    font-family: TitleFont;
+    src: url("assets/TitleFont.ttf") format("truetype");
+}
+
+@import "toolkit";
+@import "bootstrap/scss/bootstrap";
+@import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
+@import "node_modules/@ng-select/ng-select/scss/default.theme";
+
+body {
+    background-color: $light;
+    @include media-breakpoint-up(lg) {
+        background-color: rgba($dark, 0.8);
+    }
+}
+
+p,
+.btn,
+.table,
+.form-select,
+.form-control,
+.input-group-text,
+.form-check-label,
+.input-group-sm > .btn,
+.input-group-sm > .form-select,
+.input-group-sm > .form-control,
+.input-group-sm > .input-group-text {
+    @include media-breakpoint-down(sm) {
+        @include font-size(0.75rem);
+    }
+}
+
+.tooltip,
+.tooltip-arrow {
+    position: absolute;
+}
+
+.btn-outline-primary {
+    color: $black;
+}
+
+.page-link {
+    font-weight: bold;
+}
+
+.ng-select,
+.input-group-sm > .ng-select {
+    padding: 0;
+    .ng-select-container {
+        box-shadow: none;
+        border: 0;
+    }
+}
+
+.bs-datepicker {
+    @include media-breakpoint-down(sm) {
+        margin-left: -$input-group-offset-xs;
+    }
+}
+
+.el-text-small {
+    @include font-size(0.75rem);
+    @include media-breakpoint-down(sm) {
+        @include font-size(0.625rem);
+    }
+}

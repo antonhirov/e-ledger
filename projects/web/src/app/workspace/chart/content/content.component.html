@@ -1,0 +1,16 @@
+<div *ngIf="isIncome">
+    <el-chart-line
+        *ngIf="mode === 'period'"
+        [selector]="incomeChartPointsSelector"></el-chart-line>
+    <el-chart-pie
+        *ngIf="mode === 'section'"
+        [selector]="incomeChartSectionsSelector"></el-chart-pie>
+</div>
+<div *ngIf="isOutcome">
+    <el-chart-bar
+        *ngIf="mode === 'period'"
+        [selector]="outcomeChartPointsSelector"></el-chart-bar>
+    <el-chart-pie
+        *ngIf="mode === 'section'"
+        [selector]="outcomeChartSectionsSelector"></el-chart-pie>
+</div>

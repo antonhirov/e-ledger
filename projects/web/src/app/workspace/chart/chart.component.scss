@@ -1,0 +1,9 @@
+:host ::ng-deep {
+    el-chart-line,
+    el-chart-bar,
+    el-chart-pie {
+        > div {
+            min-height: 20rem;
+        }
+    }
+}

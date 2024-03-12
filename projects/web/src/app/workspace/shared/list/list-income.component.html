@@ -1,0 +1,27 @@
+<table class="table table-sm my-0">
+    <thead>
+        <tr>
+            <th>From</th>
+            <th>To</th>
+            <th>Source</th>
+            <th>Sum, $</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody class="table-group-divider">
+        <tr *ngFor="let item of items; trackBy: trackById">
+            <td>{{ item.from | date: "mediumDate" }}</td>
+            <td>{{ item.to | date: "mediumDate" }}</td>
+            <td>{{ item.source.name }}</td>
+            <td>{{ item.sum | number: "1.2-2" }}</td>
+            <td>
+                <button
+                    type="button"
+                    class="btn btn-outline-danger"
+                    (click)="onDelete(item)">
+                    <img src="../../../assets/DeleteButton.svg" alt="Delete" />
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>

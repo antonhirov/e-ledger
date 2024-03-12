@@ -1,0 +1,45 @@
+@import "toolkit";
+
+:host > div {
+    ::ng-deep .el-wrapper {
+        @include media-breakpoint-down(sm) {
+            @include font-size(0.75rem);
+        }
+        @include media-breakpoint-down(md) {
+            max-height: 14.25rem;
+        }
+        @include media-breakpoint-up(md) {
+            height: 14.25rem;
+        }
+        overflow-y: auto;
+        margin: 0.5rem 0 0.5rem 0;
+
+        .el-item {
+            cursor: grab;
+            line-height: 1.5rem;
+            margin-bottom: 0.25rem;
+            border: 1px solid $primary;
+            border-radius: $border-radius;
+            > div {
+                > div {
+                    overflow-x: hidden;
+                }
+                > button {
+                    border: 2px solid $dark;
+                    display: block;
+                    width: 1.5rem;
+                    padding: 0;
+                    > img {
+                        display: block;
+                    }
+                }
+            }
+        }
+        .el-active-item {
+            background-color: $primary;
+        }
+    }
+    > div:last-child button {
+        width: 80%;
+    }
+}

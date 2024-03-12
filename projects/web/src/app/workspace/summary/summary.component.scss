@@ -1,0 +1,20 @@
+@import "toolkit";
+
+form {
+    .input-group-text {
+        @include media-breakpoint-only(xs) {
+            width: $input-group-offset-xs;
+        }
+        @include media-breakpoint-only(sm) {
+            width: 20%;
+        }
+        @include media-breakpoint-up(md) {
+            width: 30%;
+        }
+    }
+    label.input-group-text {
+        @include media-breakpoint-only(lg) {
+            width: 32%;
+        }
+    }
+}

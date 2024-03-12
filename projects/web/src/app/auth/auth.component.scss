@@ -1,0 +1,29 @@
+@import "toolkit";
+
+:host > div {
+    margin-top: 20vh;
+    .el-title {
+        font-family: TitleFont;
+    }
+    form {
+        .input-group-text,
+        .el-form-switch {
+            width: 30%;
+            @include media-breakpoint-down(sm) {
+                width: 32%;
+            }
+        }
+        .el-space {
+            height: 8px;
+        }
+        .el-form-switch {
+            margin: 2px 0 10px 0;
+        }
+        .btn {
+            width: 30%;
+            @include media-breakpoint-down(sm) {
+                width: 50%;
+            }
+        }
+    }
+}

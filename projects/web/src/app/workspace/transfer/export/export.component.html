@@ -1,0 +1,81 @@
+<ng-template #elExportTooltip
+    >Save data to a file<br />(all fields are required)</ng-template
+>
+<div>
+    <p class="mt-3 text-end fw-bold">
+        Export<img
+            class="align-top"
+            src="../../../assets/QuestionMark.svg"
+            [tooltip]="elExportTooltip"
+            placement="left"
+            alt="Tip" />:
+    </p>
+    <form
+        #elExportForm="ngForm"
+        autocomplete="off"
+        novalidate
+        (ngSubmit)="onSubmit(elExportForm)">
+        <div class="row">
+            <div class="col-md-6 order-md-last">
+                <div class="input-group input-group-sm my-2">
+                    <label for="extension" class="input-group-text"
+                        >Extension:</label
+                    >
+                    <ng-select
+                        name="extension"
+                        labelForId="extension"
+                        class="form-control"
+                        ngModel
+                        required>
+                        <ng-option
+                            *ngFor="
+                                let item of extensions;
+                                trackBy: trackByIndex
+                            "
+                            [value]="item">
+                            {{ item | uppercase }}
+                        </ng-option>
+                    </ng-select>
+                </div>
+            </div>
+            <div class="col-md-6 order-md-first">
+                <div class="input-group input-group-sm my-2">
+                    <span class="input-group-text">From:</span>
+                    <input
+                        #elFrom="ngModel"
+                        type="text"
+                        class="form-control"
+                        name="from"
+                        ngModel
+                        required
+                        elDatepicker
+                        (onHidden)="elFrom.control.markAsDirty()" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group input-group-sm my-2">
+                    <span class="input-group-text">To:</span>
+                    <input
+                        #elTo="ngModel"
+                        type="text"
+                        class="form-control"
+                        name="to"
+                        ngModel
+                        required
+                        elDatepicker
+                        (onHidden)="elTo.control.markAsDirty()" />
+                </div>
+            </div>
+            <div class="col-md-6 d-flex justify-content-center">
+                <button
+                    type="submit"
+                    class="btn btn-sm btn-primary my-2 w-50 fw-bold"
+                    [disabled]="formSubmitted && elExportForm.invalid">
+                    Download
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

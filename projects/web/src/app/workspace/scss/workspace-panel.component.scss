@@ -1,0 +1,61 @@
+@import "toolkit";
+
+.el-panel {
+    $border: $border-width solid $primary;
+    @include media-breakpoint-up(lg) {
+        @include border-end-radius($border-radius);
+    }
+    > div:first-child {
+        @include media-breakpoint-up(lg) {
+            height: 12%;
+        }
+        button {
+            &:not(.el-btn-active):hover {
+                background-color: $info;
+            }
+            &.el-btn-active {
+                margin-bottom: -$border-width;
+                border: {
+                    top: $border;
+                    left: $border;
+                    right: $border;
+                }
+            }
+            padding: 0;
+            color: transparent;
+            background-color: $light;
+            @include border-bottom-radius(0);
+            @include media-breakpoint-down(lg) {
+                padding: 0.75rem 0;
+            }
+        }
+    }
+    > div:last-child {
+        border: {
+            top: $border;
+            bottom: $border;
+        }
+        margin: 0 calc(var(--#{$variable-prefix}gutter-x) * -0.5);
+        @include media-breakpoint-up(lg) {
+            height: 88%;
+            border-top-left-radius: $border-radius;
+            border: {
+                left: $border;
+                bottom: 0;
+            }
+        }
+    }
+}
+
+.el-circle {
+    background-color: $danger;
+    border-radius: 50%;
+    width: 0.5rem;
+    height: 0.5rem;
+    top: 0.25rem;
+    right: 0.25rem;
+    @include media-breakpoint-up(lg) {
+        top: 0.125rem;
+        right: 0.125rem;
+    }
+}

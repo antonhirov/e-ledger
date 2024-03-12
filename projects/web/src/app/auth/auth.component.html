@@ -1,0 +1,93 @@
+<div class="row">
+    <div
+        class="col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 p-4 bg-light rounded">
+        <div class="text-center">
+            <p class="el-title d-inline-block align-middle fs-1">E~Ledger</p>
+            <img
+                class="d-inline-block"
+                src="assets/TitleImage.svg"
+                alt="Title" />
+        </div>
+        <form
+            #elAuthForm="ngForm"
+            autocomplete="off"
+            novalidate
+            (ngSubmit)="onSubmit(elAuthForm)">
+            <div class="input-group my-2">
+                <span class="input-group-text">Email:</span>
+                <input
+                    class="form-control"
+                    type="email"
+                    name="email"
+                    ngModel
+                    email
+                    required
+                    (focus)="onFocus()" />
+            </div>
+            <div class="input-group my-2">
+                <span class="input-group-text">Password:</span>
+                <input
+                    class="form-control"
+                    type="password"
+                    name="password"
+                    ngModel
+                    required
+                    elEqualPasswords="passwordConfirm"
+                    [minlength]="passwordMinLength"
+                    (focus)="onFocus()" />
+            </div>
+            <div *ngIf="isSignUpMode" [@authSignUpTrigger] class="input-group">
+                <span class="input-group-text">Password:</span>
+                <input
+                    class="form-control"
+                    type="password"
+                    name="passwordConfirm"
+                    placeholder="confirm the password.."
+                    ngModel
+                    required
+                    elEqualPasswords="password"
+                    (focus)="onFocus()" />
+            </div>
+            <div
+                *ngIf="isSignUpMode"
+                [@authSignUpTrigger]
+                class="el-space"></div>
+            <div class="d-flex flex-row mb-1">
+                <div class="el-form-switch form-switch form-check">
+                    <input
+                        id="isSignUpMode"
+                        type="checkbox"
+                        class="form-check-input"
+                        (change)="onAuthSignUpChange($event)" />
+                    <label for="isSignUpMode" class="form-check-label"
+                        >Sign up</label
+                    >
+                </div>
+                <div
+                    *ngIf="
+                        (elAuthForm.touched && elAuthForm.invalid) || extraError
+                    ">
+                    <!-- eslint-disable  @angular-eslint/template/no-call-expression -->
+                    <p
+                        *ngFor="
+                            let error of getErrorMessages(elAuthForm);
+                            trackBy: trackByIndex
+                        "
+                        [@authErrorTrigger]
+                        class="el-text-small text-danger">
+                        {{ error }}
+                    </p>
+                    <!-- eslint-enable  @angular-eslint/template/no-call-expression -->
+                </div>
+            </div>
+            <div class="text-center">
+                <button
+                    type="submit"
+                    class="btn btn-primary fw-bold"
+                    [disabled]="formSubmitted && elAuthForm.invalid">
+                    Continue
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

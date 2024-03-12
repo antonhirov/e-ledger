@@ -1,0 +1,27 @@
+<div class="btn-toolbar justify-content-center mt-3 mb-4">
+    <div class="btn-group btn-group-sm">
+        <button
+            *ngIf="items.length > 0"
+            type="button"
+            class="btn btn-outline-primary"
+            (click)="onPrev()">
+            &laquo;
+        </button>
+        <button
+            *ngFor="let item of items; trackBy: trackByIndex"
+            type="button"
+            class="btn btn-outline-primary"
+            [class.active]="item === activeItem"
+            [disabled]="item === disabledItem"
+            (click)="onSelect(item)">
+            {{ item === disabledItem ? "…" : item + 1 }}
+        </button>
+        <button
+            *ngIf="items.length > 0"
+            type="button"
+            class="btn btn-outline-primary"
+            (click)="onNext()">
+            &raquo;
+        </button>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+<div class="row">
+    <div class="el-panel order-lg-last col-lg-4 bg-light">
+        <div class="d-flex">
+            <button
+                type="button"
+                class="btn flex-fill"
+                routerLink="cashflow"
+                routerLinkActive="el-btn-active">
+                <img src="../../assets/CashflowButton.svg" alt="Cashflow" />
+            </button>
+            <button
+                type="button"
+                class="btn flex-fill"
+                routerLink="summary"
+                routerLinkActive="el-btn-active">
+                <img src="../../assets/ListButton.svg" alt="Summary" />
+            </button>
+            <button
+                type="button"
+                class="btn flex-fill"
+                routerLink="chart"
+                routerLinkActive="el-btn-active">
+                <img src="../../assets/ChartButton.svg" alt="Chart" />
+            </button>
+            <button
+                type="button"
+                class="btn flex-fill"
+                routerLink="transfer"
+                routerLinkActive="el-btn-active">
+                <img src="../../assets/TransferButton.svg" alt="Transfer" />
+            </button>
+            <button
+                type="button"
+                class="btn flex-fill"
+                routerLink="adjustment"
+                routerLinkActive="el-btn-active">
+                <img src="../../assets/AdjustmentButton.svg" alt="Adjustment" />
+            </button>
+            <button
+                type="button"
+                class="btn flex-fill position-relative"
+                routerLink="exit"
+                routerLinkActive="el-btn-active">
+                <img src="../../assets/ExitButton.svg" alt="Exit" />
+                <span
+                    *ngIf="isUnsaved"
+                    class="el-circle position-absolute"></span>
+            </button>
+        </div>
+        <div>
+            <router-outlet name="panel"></router-outlet>
+        </div>
+    </div>
+    <div class="el-container order-lg-first col-lg-8 bg-light">
+        <router-outlet></router-outlet>
+    </div>
+</div>

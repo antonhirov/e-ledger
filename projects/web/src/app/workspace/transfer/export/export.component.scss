@@ -1,0 +1,24 @@
+@import "toolkit";
+
+.input-group-text {
+    @include media-breakpoint-only(xs) {
+        width: $input-group-offset-xs;
+    }
+    @include media-breakpoint-only(sm) {
+        width: 20%;
+    }
+    @include media-breakpoint-up(md) {
+        width: 20%;
+    }
+}
+label.input-group-text {
+    @include media-breakpoint-only(md) {
+        width: 30%;
+    }
+    @include media-breakpoint-only(lg) {
+        width: 36%;
+    }
+    @include media-breakpoint-up(xl) {
+        width: 30%;
+    }
+}

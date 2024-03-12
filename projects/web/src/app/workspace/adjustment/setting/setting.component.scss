@@ -1,0 +1,22 @@
+@import "toolkit";
+
+span.input-group-text {
+    @include media-breakpoint-only(xs) {
+        width: $input-group-offset-xs;
+    }
+    @include media-breakpoint-only(sm) {
+        width: 19%;
+    }
+    @include media-breakpoint-up(md) {
+        width: 15%;
+    }
+    @include media-breakpoint-only(lg) {
+        width: 18%;
+    }
+}
+.input-group + p {
+    height: 1.125rem;
+}
+button {
+    width: 80%;
+}

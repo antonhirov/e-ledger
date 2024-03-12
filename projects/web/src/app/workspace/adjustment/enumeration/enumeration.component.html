@@ -1,0 +1,90 @@
+<ng-template #elItemTemplate let-item="item" let-index="index">
+    <div class="d-flex justify-content-between m-1">
+        <div>{{ item.value.name }}</div>
+        <button
+            type="button"
+            class="btn btn-outline-danger"
+            [disabled]="item.value.isDisabled"
+            (click)="onDelete(item, index)">
+            <img src="../../../assets/DeleteButton.svg" alt="Delete" />
+        </button></div
+></ng-template>
+
+<div>
+    <div class="row">
+        <div class="col-md-6">
+            <p class="text-end fw-bold">Sources:</p>
+            <bs-sortable
+                #elSourceItems
+                [itemTemplate]="elItemTemplate"
+                [(ngModel)]="sources"
+                itemClass="el-item"
+                itemActiveClass="el-active-item"
+                placeholderItem="no items..."
+                placeholderClass="text-center"
+                wrapperClass="el-wrapper"></bs-sortable>
+            <div class="input-group input-group-sm mb-3">
+                <input
+                    #elSource="ngModel"
+                    autocomplete="off"
+                    type="text"
+                    name="source"
+                    class="form-control"
+                    ngModel
+                    [maxlength]="maxLength" />
+                <button
+                    type="button"
+                    class="btn btn-sm btn-primary fw-bold"
+                    (click)="onAdd(elSource)">
+                    Add
+                </button>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <p class="text-end fw-bold">Categories:</p>
+            <bs-sortable
+                #elCategoryItems
+                [itemTemplate]="elItemTemplate"
+                [(ngModel)]="categories"
+                itemClass="el-item"
+                itemActiveClass="el-active-item"
+                placeholderItem="no items..."
+                placeholderClass="text-center"
+                wrapperClass="el-wrapper"></bs-sortable>
+            <div class="input-group input-group-sm mb-3">
+                <input
+                    #elCategory="ngModel"
+                    autocomplete="off"
+                    type="text"
+                    name="category"
+                    class="form-control"
+                    ngModel
+                    [maxlength]="maxLength" />
+                <button
+                    type="button"
+                    class="btn btn-sm btn-primary fw-bold"
+                    (click)="onAdd(elCategory)">
+                    Add
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-4 text-center">
+        <div class="col-6">
+            <button
+                type="button"
+                class="btn btn-sm btn-primary fw-bold"
+                (click)="onSave()">
+                Attach
+            </button>
+        </div>
+        <div class="col-6">
+            <button
+                type="button"
+                class="btn btn-sm btn-primary fw-bold"
+                (click)="onCancel()">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+name: build
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "develop" ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: pwsh
+    env:
+      KEY: "-"
+      USER_STORAGE: "-"
+      DATA_STORAGE: "-"
+    steps:
+    - name: Checkout data
+      uses: actions/checkout@v3
+    - name: Setup node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: "npm"
+    - name: Set credentials
+      run: .\set.credentials.ps1 -key $env:KEY -userStorage $env:USER_STORAGE -dataStorage $env:DATA_STORAGE
+    - name: Install packages
+      run: npm ci
+    - name: Build project
+      run: npm run build

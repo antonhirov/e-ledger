@@ -1,0 +1,66 @@
+<ng-template #elImportTooltip
+    >Upload data from XLSX<br />(file field is required)</ng-template
+>
+<div>
+    <p class="mt-3 text-end fw-bold">
+        Import<img
+            class="align-top"
+            src="../../../assets/QuestionMark.svg"
+            [tooltip]="elImportTooltip"
+            placement="left"
+            alt="Tip" />:
+    </p>
+    <form
+        #elImportForm="ngForm"
+        autocomplete="off"
+        novalidate
+        (ngSubmit)="onSubmit(elImportForm)">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="my-2">
+                    <input
+                        type="file"
+                        accept=".xlsx"
+                        class="form-control form-control-sm"
+                        name="file"
+                        ngModel
+                        required
+                        (change)="onFileChange($event)" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-check form-control-sm my-2 pt-0 pb-0">
+                    <input
+                        id="isRewritten"
+                        name="isRewritten"
+                        type="checkbox"
+                        class="form-check-input"
+                        ngModel />
+                    <label for="isRewritten" class="form-check-label"
+                        >Rewrite data<sup class="text-danger">#</sup><br />
+                        <span
+                            *ngIf="isIncome"
+                            class="el-text-small text-danger">
+                            <sup>#</sup>based on range and source
+                        </span>
+                        <span
+                            *ngIf="isOutcome"
+                            class="el-text-small text-danger">
+                            <sup>#</sup>based on date and category
+                        </span></label
+                    >
+                </div>
+            </div>
+            <div class="col-md-6 d-flex justify-content-center">
+                <button
+                    type="submit"
+                    class="btn btn-sm btn-primary my-2 w-50 fw-bold"
+                    [disabled]="formSubmitted && elImportForm.invalid">
+                    Upload
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

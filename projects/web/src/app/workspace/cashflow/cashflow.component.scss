@@ -1,0 +1,26 @@
+@import "toolkit";
+
+:host > div {
+    > div {
+        min-height: 8.3125rem;
+    }
+    form {
+        .input-group-text {
+            @include media-breakpoint-only(xs) {
+                width: $input-group-offset-xs;
+            }
+            @include media-breakpoint-only(sm) {
+                width: 25%;
+            }
+            @include media-breakpoint-up(md) {
+                width: 20%;
+            }
+            sup {
+                color: $danger;
+            }
+        }
+        button {
+            width: 80%;
+        }
+    }
+}
