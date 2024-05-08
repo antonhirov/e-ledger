@@ -1,0 +1,6 @@
+@ElectronicLedger.Api_HostAddress = http://localhost:5029
+
+GET {{ElectronicLedger.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
