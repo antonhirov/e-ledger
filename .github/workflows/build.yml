@@ -1,0 +1,33 @@
+name: build
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "develop", "main" ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    # Get changes from the storage
+    - name: Checkout data
+      uses: actions/checkout@v3
+    # Install the .NET workload
+    - name: Install .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 8.0.x
+    # Cache the dependencies using a unique key
+    - name: Cache dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.nuget/packages
+        key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
+        restore-keys: |
+          ${{ runner.os }}-nuget
+    # Look for the dependencies and tools and download them if necessary
+    - name: Install dependencies
+      run: dotnet restore
+    # Build the solution without implicit restore
+    - name: Build
+      run: dotnet build --no-restore
