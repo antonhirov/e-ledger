@@ -1,0 +1,15 @@
+GET {{HostAddress}}/user
+
+###
+
+POST {{HostAddress}}/user
+
+###
+
+DELETE {{HostAddress}}/user
+
+###
+
+PATCH {{HostAddress}}/user
+
+###

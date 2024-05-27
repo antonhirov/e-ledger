@@ -1,0 +1,15 @@
+GET {{HostAddress}}/wallet/id
+
+###
+
+GET {{HostAddress}}/wallet
+
+###
+
+POST {{HostAddress}}/wallet
+
+###
+
+DELETE {{HostAddress}}/wallet
+
+###
