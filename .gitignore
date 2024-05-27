@@ -5,3 +5,6 @@
 # Build results
 bin/
 obj/
+
+# Auto-generated web API file
+ElectronicLedger.Api.http
