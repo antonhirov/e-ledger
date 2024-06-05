@@ -90,6 +90,7 @@ dotnet_diagnostic.CA1852.severity = error
 dotnet_diagnostic.CA1040.severity = error
 dotnet_diagnostic.CA1859.severity = warning
 dotnet_diagnostic.IDE0130.severity = error
+dotnet_diagnostic.VSSpell001.severity = none
 insert_final_newline = true
 
 ### Csharp styles ###
