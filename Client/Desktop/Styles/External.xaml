@@ -1,0 +1,14 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml">
+
+    <!--  External styles  -->
+    <ResourceDictionary.MergedDictionaries>
+        <ui:ControlsDictionary />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!--  Variables.xaml  -->
+
+    <!--  Palette.xaml  -->
+
+</ResourceDictionary>

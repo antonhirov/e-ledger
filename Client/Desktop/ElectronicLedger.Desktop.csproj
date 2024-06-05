@@ -17,6 +17,14 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="WPF-UI" Version="3.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+	  <Resource Include="Assets\MainFont.ttf" />
+	  <Resource Include="Assets\TitleFont.ttf" />
+	  <Resource Include="Assets\TitleImage.png" />
+	  <Resource Include="Assets\TitleImage.svg" />
   </ItemGroup>
 
 </Project>
