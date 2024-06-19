@@ -9,14 +9,14 @@ namespace ElectronicLedger.Desktop
     using Wpf.Ui.Appearance;
 
     /// <summary>
-    /// Interaction logic for MainWindow.xaml.
+    /// Interaction logic for Authentication.xaml.
     /// </summary>
-    public partial class AuthWindow : Window
+    public partial class AuthenticationWindow : Window
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AuthWindow"/> class.
+        /// Initializes a new instance of the <see cref="AuthenticationWindow"/> class.
         /// </summary>
-        public AuthWindow()
+        public AuthenticationWindow()
         {
             this.InitializeComponent();
 
