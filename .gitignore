@@ -1,0 +1,5 @@
+# Build results
+build/
+
+# User-specific files
+*.pro.user
